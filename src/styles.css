@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+/* VARIABLES */
+:root {
+    --white: #f3f3f3;
+    --black: #242424;
+}
+/* FONTS */
+@font-face {
+    font-family: 'BOLD';
+    src: url('assets/fonts/Montserrat-Bold.ttf');
+}
+@font-face {
+    font-family: 'SEMI-BOLD';
+    src: url('assets/fonts/Montserrat-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'REGULAR';
+    src: url('assets/fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+    font-family: 'MEDIUM';
+    src: url('assets/fonts/Montserrat-Medium.ttf');
+}
+body{
+    overflow-x: hidden;
+    font-family: 'REGULAR';
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'BOLD';
+}
