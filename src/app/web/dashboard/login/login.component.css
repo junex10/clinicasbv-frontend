@@ -18,14 +18,17 @@
     position: absolute;
     background-color: rgba(0, 0, 0, .5);
 }
+.logo_box {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+}
 #logo {
-    width: 180px;
+    width: 100%;
 }
 .title_login{
-    text-align: center;
-    padding: 20px;
-    position: relative;
-    left: 100%;
+    width: 100%;
 }
 .form {
     position: absolute;

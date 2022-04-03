@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Modules
 import { DashboardModule } from './web/dashboard/dashboard.module';
+import { NotexistspageComponent } from './web/notexistspage/notexistspage.component';
 
 // Components
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotexistspageComponent
   ],
   imports: [
     BrowserModule,
