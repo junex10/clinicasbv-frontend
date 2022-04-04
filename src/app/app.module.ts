@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ApiInterceptor } from './helpers';
 
 // Modules
@@ -28,6 +27,7 @@ import { NotexistspageComponent } from './web/notexistspage/notexistspage.compon
     NgbAlertModule, 
     BrowserAnimationsModule,
     HttpClientModule,
+    
     DashboardModule
   ],
   providers: [{

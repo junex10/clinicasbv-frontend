@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// External modules
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-// Login
+// Components
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+
+// Internal modules
+
+import { ProfileModule } from './profile/profile.module';
 
 const routes: Routes = [
   {
@@ -22,6 +28,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule)
   }
 ];
 
@@ -43,7 +53,10 @@ const routes: Routes = [
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+
+    // Modules
+    ProfileModule
   ],
 })
 export class DashboardModule { }
