@@ -1,12 +1,16 @@
-export const DOMAIN = 'http://localhost:4000';
+import { HttpHeaders } from '@angular/common/http';
+import {
+    environment
+} from 'src/environments/environment';
+
 export const HTTP_OPTIONS = {
-    headers: {
+    headers: new HttpHeaders({
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-    }
+    })
 }
 export const HTTP_CONFIG = {
-    baseURL: DOMAIN,
+    baseURL: environment.baseUrl,
     timeout: 25000,
     headers: HTTP_OPTIONS
 };
