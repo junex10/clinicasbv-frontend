@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { LoginService } from 'src/app/services';
+import Swal from 'sweetalert2';
+import {
+  SwalAlerts
+} from 'src/app/shared';
+import { LoginService, AuthService } from 'src/app/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +22,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private login: LoginService
+    private login: LoginService,
+    private route: Router,
+    private auth: AuthService
   ) {
     this.form = this.fb.group({
       email: [null, [
@@ -40,8 +46,13 @@ export class LoginComponent implements OnInit {
 
   submit = () => {
     this.login.login(this.form.value).subscribe(
-      (e) => console.log(e),
-      err => console.error(err)
+      (user) => {
+        Swal.fire(SwalAlerts.swalSuccess('Sesión iniciada', 'Se ha iniciado la sesión')).then(() => {
+          this.auth.setUser(user?.token);
+          this.route.navigate(['/profile']);
+        })
+      },
+      () => Swal.fire(SwalAlerts.swalError())
     )
   }
 

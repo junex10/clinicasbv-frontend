@@ -37,15 +37,32 @@ class SwalAlerts {
 
     swalSuccess = (
         title: string = 'Acción completada',
-        text: string = 'La acción se ha completado correctamente'
+        text: string = 'La acción se ha completado correctamente',
+        buttonText: string = 'Entendido'
     ): SweetAlertOptions => ({
         title,
         text,
         showConfirmButton: true,
-        confirmButtonText: 'Entendido',
+        confirmButtonText: buttonText,
         customClass: {
             confirmButton: 'btn btn-success'
-        }
-    })
+        },
+        timer: 3000
+    });
+
+    swalError = (
+        title: string = 'Error de conexión',
+        text: string = 'Ha ocurrido un error de conexión',
+        buttonText: string = 'Entendido'
+    ): SweetAlertOptions => ({
+        title,
+        text,
+        showConfirmButton: true,
+        confirmButtonText: buttonText,
+        customClass: {
+            confirmButton: 'btn btn-danger'
+        },
+        timer: 3000
+    });
 }
 export default new SwalAlerts();
