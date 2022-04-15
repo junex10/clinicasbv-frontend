@@ -19,15 +19,19 @@ import { RegisterComponent } from './register/register.component';
 
 import { ProfileModule } from './profile/profile.module';
 
+import { LoginGuard } from 'src/app/guards';
+
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'profile',

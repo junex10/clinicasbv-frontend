@@ -8,5 +8,5 @@ export class AuthService {
   constructor() { }
 
   setUser = (data: any) => window.sessionStorage.setItem('user', JSON.stringify(data))
-  getUser = () => JSON.parse(window.localStorage.getItem('user') || ``);
+  getUser = () => JSON.parse(window.sessionStorage.getItem('user') || JSON.stringify(``)) || false;
 }
