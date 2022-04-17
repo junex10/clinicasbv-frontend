@@ -2,20 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-// Modules
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
-// Interceptors
-import { AuthInterceptor } from 'src/app/helpers';
-
 // Components
 import { ProfileComponent } from './profile.component';
+import { ProfileGuard } from 'src/app/guards';
 
 const routes: Routes = [
   {
     path: 'profile',
     pathMatch: 'full',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [ProfileGuard]
   }
 ]
 
@@ -25,11 +21,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule
-  ],
- /* providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }]*/
+  ]
 })
 export class ProfileModule { }

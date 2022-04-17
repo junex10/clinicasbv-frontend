@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from 'src/app/helpers';
 
 // External modules
 
@@ -19,12 +21,17 @@ import { RegisterComponent } from './register/register.component';
 
 import { ProfileModule } from './profile/profile.module';
 
+// Guards
 import { LoginGuard } from 'src/app/guards';
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
     component: LoginComponent,
     canActivate: [LoginGuard]
   },
@@ -47,6 +54,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
+    HttpClientModule,
 
     // Forms
     FormsModule, 
@@ -62,5 +70,8 @@ const routes: Routes = [
     // Modules
     ProfileModule
   ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
 })
 export class DashboardModule { }
