@@ -1,40 +1,45 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { local, prod } from 'src/environments';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ApiInterceptor } from './helpers';
 
 // Modules
 import { DashboardModule } from './web/dashboard/dashboard.module';
-import { NotexistspageComponent } from './web/notexistspage/notexistspage.component';
+import { SocketsService } from './services';
 
-// Components
+const socket: SocketIoConfig = { url: !local.production ? local.socket : prod.socket, options: {
+  transports: ['websocket']
+} };
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NotexistspageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgbPaginationModule, 
-    NgbAlertModule, 
+    NgbPaginationModule,
+    NgbAlertModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    
+
+    // Socket
+    SocketIoModule.forRoot(socket),
+
     DashboardModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: ApiInterceptor,
-    multi: true
-  }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
+    SocketsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

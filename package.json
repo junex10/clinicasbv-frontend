@@ -25,6 +25,7 @@
     "@types/socket.io": "^3.0.2",
     "bootstrap": "^4.5.0",
     "moment": "^2.29.2",
+    "ngx-socket-io": "3.2.0",
     "ngx-spinner": "^13.0.0",
     "ngx-toastr": "^14.2.1",
     "rxjs": "~6.6.0",
