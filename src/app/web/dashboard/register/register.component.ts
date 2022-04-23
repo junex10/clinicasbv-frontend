@@ -47,8 +47,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*Swal.fire(SwalAlerts.swalLoader())
-    .then(() => console.log('HEY'));*/
   }
 
   switchVisibility = (type: string = 'password') => {
@@ -58,13 +56,7 @@ export class RegisterComponent implements OnInit {
 
   submit = () => {
     this.login.register(this.form.value).subscribe(
-      (user) => {
-        Swal.fire(SwalAlerts.swalInfo('Su registro ha sido exitoso', 'Se le ha enviado un correo electrónico')).then(() => {
-          console.log(user, ' HERE ')
-          /*this.auth.setUser(user);
-          this.route.navigate(['/profile']);*/
-        })
-      }
+      () => Swal.fire(SwalAlerts.swalRegisterUser())
     )
   }
 

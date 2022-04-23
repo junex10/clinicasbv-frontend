@@ -21,4 +21,6 @@ export class AuthService {
 
   checkPermissions = (form: CheckPermissionDTO) => this.http.post(`${API}checkPermissions`, form).toPromise();
 
+  verify = (token: string) => this.http.post<any>(`${API}verify`, { url: token });
+
 }

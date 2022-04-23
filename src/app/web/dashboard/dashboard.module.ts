@@ -23,6 +23,7 @@ import { ProfileModule } from './profile/profile.module';
 
 // Guards
 import { LoginGuard } from 'src/app/guards';
+import { VerifyComponent } from './verify/verify.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
+    path: 'verify/:token',
+    component: VerifyComponent
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule)
   }
@@ -49,7 +54,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifyComponent
   ],
   imports: [
     RouterModule.forChild(routes),

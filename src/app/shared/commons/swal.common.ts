@@ -98,17 +98,5 @@ class SwalAlerts {
         },
         timer: 3000
     });
-
-    swalLoader = (
-        loading: string = 'Cargando...'
-    ): SweetAlertOptions => ({
-        html: `
-        <div>
-            <div class="iconSwal"><i class="fa-solid fa-user iconBorder success"></i></div><hr>
-            <h4 class='text-center'>${loading}</h4>
-        </div>
-        `,
-        showConfirmButton: false
-    });
 }
 export default new SwalAlerts();
