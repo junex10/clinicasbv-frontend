@@ -67,6 +67,33 @@ html, body { height: 100%; }
 .text-warning {
     color: var(--warning) !important;
 }
+.danger {
+    background-color: var(--danger);
+}
+.warning {
+    background-color: var(--warning);
+}
+.success {
+    background-color: var(--success);
+}
+.info {
+    background-color: var(--info);
+}
 .mat-button-disabled{
    font-family: 'REGULAR';
+}
+/* SWAL */
+.iconSwal{
+    font-size: 60px;
+    color: white;
+}
+.iconBorder{
+    box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+	-webkit-box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+	-moz-box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+	-o-box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 50%;
 }

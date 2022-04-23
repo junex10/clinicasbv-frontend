@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import {
+  SwalAlerts
+} from 'src/app/shared';
+import { LoginService, AuthService } from 'src/app/services';
+import { Router } from '@angular/router';
+import { VerifyPassword } from './register.validator';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +15,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  logo: string = 'assets/img/logo.png';
+
+  visibility: string = 'password';
+  visibility_confirm: string = 'password';
+
+  form: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private login: LoginService,
+    private route: Router,
+    private auth: AuthService
+  ) {
+    this.form = this.fb.group({
+      email: [null, [
+        Validators.required,
+        Validators.email
+      ]],
+      password: [null, [
+        Validators.required,
+        Validators.minLength(6)
+      ]],
+      password_confirmation: [null, [
+        Validators.required,
+        Validators.minLength(6)
+      ]]
+    }, {
+      validator: VerifyPassword('password', 'password_confirmation')
+    })
+  }
 
   ngOnInit(): void {
+    /*Swal.fire(SwalAlerts.swalLoader())
+    .then(() => console.log('HEY'));*/
   }
+
+  switchVisibility = (type: string = 'password') => {
+    if (type === 'password') this.visibility = this.visibility === 'password' ? 'text' : 'password';
+    else this.visibility_confirm = this.visibility_confirm === 'password' ? 'text' : 'password';
+  }
+
+  submit = () => {
+    this.login.register(this.form.value).subscribe(
+      (user) => {
+        Swal.fire(SwalAlerts.swalInfo('Su registro ha sido exitoso', 'Se le ha enviado un correo electrónico')).then(() => {
+          console.log(user, ' HERE ')
+          /*this.auth.setUser(user);
+          this.route.navigate(['/profile']);*/
+        })
+      }
+    )
+  }
+
+  get email() { return this.form.get('email')?.value }
+  get password() { return this.form.get('password')?.value }
+  get password_confirmation() { return this.form.get('password_confirmation')?.value }
 
 }

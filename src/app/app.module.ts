@@ -8,11 +8,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { ApiInterceptor } from './helpers';
 
 // Modules
 import { DashboardModule } from './web/dashboard/dashboard.module';
-import { SocketsService } from './services';
 
 const socket: SocketIoConfig = { url: !local.production ? local.socket : prod.socket, options: {
   transports: ['websocket']
@@ -30,6 +30,7 @@ const socket: SocketIoConfig = { url: !local.production ? local.socket : prod.so
     NgbAlertModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    NgxSpinnerModule,
 
     // Socket
     SocketIoModule.forRoot(socket),
@@ -37,8 +38,7 @@ const socket: SocketIoConfig = { url: !local.production ? local.socket : prod.so
     DashboardModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
-    SocketsService
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
-  LoginDTO
+  LoginDTO,
+  RegisterParamsDTO
 } from 'src/app/dtos';
 
 const API = 'auth/';
@@ -15,6 +16,8 @@ export class LoginService {
     private http: HttpClient
   ) { }
 
-  login = (form: LoginDTO) => this.http.post<any>(`${API}login`, form)
+  login = (form: LoginDTO) => this.http.post<any>(`${API}login`, form);
+
+  register = (form: RegisterParamsDTO) => this.http.post<any>(`${API}register`, form);
 
 }
