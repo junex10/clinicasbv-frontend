@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
   CheckPermissionDTO,
-  GetUserDTO
+  GetUserDTO,
+  ResetParamsDTO
 } from 'src/app/dtos';
 
 const API = 'auth/';
@@ -23,4 +24,9 @@ export class AuthService {
 
   verify = (token: string) => this.http.post<any>(`${API}verify`, { url: token });
 
+  recover = (email: string) => this.http.post<GetUserDTO>(`${API}recover`, { email });
+
+  sendOtp = (otp: string) => this.http.post<any>(`${API}check-code`, { code: otp });
+
+  reset = (form: ResetParamsDTO) => this.http.post<any>(`${API}reset`, form);
 }

@@ -9,7 +9,8 @@ import {
 
 // Resources
 import {
-    GetUserDTO
+    GetUserDTO,
+    ResetParamsDTO
 } from './resources/auth.dto';
 
 export {
@@ -19,5 +20,6 @@ export {
     CheckPermissionDTO,
 
     // Resources
-    GetUserDTO
+    GetUserDTO,
+    ResetParamsDTO
 };

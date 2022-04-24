@@ -82,6 +82,12 @@ html, body { height: 100%; }
 .mat-button-disabled{
    font-family: 'REGULAR';
 }
+.box-shadow{
+    box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+	-webkit-box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+	-moz-box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+	-o-box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
+}
 /* SWAL */
 .iconSwal{
     font-size: 60px;
