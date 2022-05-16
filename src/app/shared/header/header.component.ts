@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { GetUserDTO } from 'src/app/dtos';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  showMenu: boolean = false;
+  user: GetUserDTO | any = '';
+
+  menu = [
+    {
+      name: 'Perfil',
+      icon: "fa-solid fa-user",
+      selected: false,
+      multiple: true,
+      subMenu: [
+        {
+          name: 'Perfil',
+          icon: "fa-solid fa-user",
+          route: '/profile'
+        }
+      ],
+    },
+    {
+      name: 'Salir',
+      icon: 'fa-solid fa-arrow-right-from-bracket',
+      selected: false,
+      multiple: false,
+      action: 'logout()'
+    }
+  ];
+
+  constructor(
+    private route: Router,
+    private auth: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.user = this.auth.getUser()?.user;
   }
 
+  openMenu = () => this.showMenu = this.showMenu ? false : true;
+
+  redirect = (route: string) => this.route.navigate([route]);
+
+  action = (action: any) => eval(`this.${action}`);
+
+  logout = () => this.auth.logout();
 }

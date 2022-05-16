@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 // Components
 import { ProfileComponent } from './profile.component';
 import { ProfileGuard } from 'src/app/guards';
+import { DatatableComponent, HeaderComponent } from 'src/app/shared';
+import { DataTablesModule } from 'angular-datatables';
 
 const routes: Routes = [
   {
@@ -17,10 +19,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    ProfileComponent,
+    HeaderComponent,
+    DatatableComponent
   ],
   imports: [
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    DataTablesModule
   ]
 })
 export class ProfileModule { }

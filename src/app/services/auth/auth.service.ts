@@ -5,20 +5,27 @@ import {
   GetUserDTO,
   ResetParamsDTO
 } from 'src/app/dtos';
+import { IAUTH } from 'src/app/interfaces';
+import { Router } from '@angular/router';
 
 const API = 'auth/';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements IAUTH {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private route: Router
   ) { }
 
   setUser = (data: any) => window.sessionStorage.setItem('user', JSON.stringify(data))
   getUser = (): GetUserDTO => JSON.parse(window.sessionStorage.getItem('user') || JSON.stringify(``))?.data || false;
+  logout = (route: string = '/login') => {
+    window.sessionStorage.removeItem('user');
+    this.route.navigate([route]);
+  };
 
   checkPermissions = (form: CheckPermissionDTO) => this.http.post(`${API}checkPermissions`, form).toPromise();
 
