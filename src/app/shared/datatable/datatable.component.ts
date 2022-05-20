@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Constants } from 'src/app/shared';
 
 @Component({
@@ -7,16 +7,23 @@ import { Constants } from 'src/app/shared';
   styleUrls: ['./datatable.component.css'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class DatatableComponent implements OnInit {
+export class DatatableComponent implements OnChanges {
 
   @Input('options') options: {} = {};
   @Input('language') language: {} = {};
+
+  @Input('data') data: any[] = [];
+  @Input('total') total: number = 0;
+  @Input('page') page: number = 1;
+  @Input('perPage') perPage: number = Constants.PER_PAGE;
+
+  @Output() next = new EventEmitter<number>();
 
   dtOptions: DataTables.Settings = {};
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.dtOptions = {
       ...this.options,
       pageLength: Constants.PER_PAGE_WEB,
@@ -33,12 +40,12 @@ export class DatatableComponent implements OnInit {
         loadingRecords: "Cargando registros...",
         zeroRecords: "No se encontraron registros",
         emptyTable: "No hay datos disponibles en la tabla",
-        paginate: {
+       /* paginate: {
           first: "Primero",
           previous: "Anterior",
           next: "Siguiente",
           last: "Último"
-        },
+        },*/
         aria: {
           sortAscending: ": Activar para ordenar la tabla en orden ascendente",
           sortDescending: ": Activar para ordenar la tabla en orden descendente"
@@ -46,6 +53,12 @@ export class DatatableComponent implements OnInit {
         ...this.language
       }
     };
+
+  }
+
+  pageChange = (page: any) => {
+    this.page = page;
+    this.next.emit(page);
   }
 
 }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 // Components
 import { ProfileComponent } from './profile.component';
@@ -26,7 +28,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    DataTablesModule
+    DataTablesModule,
+    NgxPaginationModule,
   ]
 })
 export class ProfileModule { }

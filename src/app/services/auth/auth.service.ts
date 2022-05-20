@@ -36,4 +36,6 @@ export class AuthService implements IAUTH {
   sendOtp = (otp: string) => this.http.post<any>(`${API}check-code`, { code: otp });
 
   reset = (form: ResetParamsDTO) => this.http.post<any>(`${API}reset`, form);
+
+  getUsers = (page: number) => this.http.get(`${API}getUsers/${page}`); 
 }

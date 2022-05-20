@@ -166,7 +166,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <app-datatable></app-datatable>
+                                    <app-datatable
+                                        [data]="data"
+                                        [total]="total"
+                                        (next)="next($event)"
+                                    ></app-datatable>
                                 </div>
                             </div>
                         </div>
