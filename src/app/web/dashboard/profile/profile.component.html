@@ -149,6 +149,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <app-table
+                                        [header]="header"
                                         [data]="data"
                                         [total]="total"
                                         (next)="next($event)"

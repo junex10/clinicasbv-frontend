@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, OnChanges, Output, EventEmitter, SimpleChange } from '@angular/core';
+import { Component, Input, ViewEncapsulation, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Constants } from 'src/app/shared';
 
 @Component({
@@ -16,6 +16,7 @@ export class DatatableComponent implements OnChanges {
   @Input('total') total: number = 0;
   @Input('page') page: number = 1;
   @Input('perPage') perPage: number = Constants.PER_PAGE;
+  @Input('header') header: any[] = [];
 
   @Output() next = new EventEmitter<number>();
 

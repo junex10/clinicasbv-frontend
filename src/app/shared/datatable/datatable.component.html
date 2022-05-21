@@ -1,9 +1,7 @@
 <table datatable [dtOptions]="dtOptions" class="row-border hover box-shadow">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>First name</th>
-            <th>Last name</th>
+            <th *ngFor="let h of header">{{ h }}</th>
         </tr>
     </thead>
     <tbody>

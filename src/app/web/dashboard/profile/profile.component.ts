@@ -10,6 +10,7 @@ export class ProfileComponent implements OnInit {
 
   data: any[] = [];
   total: number = 0;
+  header = ['ID', 'First name', 'Last name'];
 
   constructor(
     private auth: AuthService
