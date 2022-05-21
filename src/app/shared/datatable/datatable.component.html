@@ -1,4 +1,4 @@
-<table datatable [dtOptions]="dtOptions" class="row-border hover">
+<table datatable [dtOptions]="dtOptions" class="row-border hover box-shadow">
     <thead>
         <tr>
             <th>ID</th>
@@ -7,22 +7,17 @@
         </tr>
     </thead>
     <tbody>
-        <tr
-            *ngFor="let item of data | paginate: { itemsPerPage: perPage, currentPage: page, totalItems: total }"
-        >
+        <tr *ngFor="let item of data | paginate: { itemsPerPage: perPage, currentPage: page, totalItems: total }">
             <td>{{ item.id }}</td>
             <td>{{ item.id }}</td>
             <td>{{ item.id }}</td>
         </tr>
     </tbody>
-    <tfoot>
-        <tr>
-          <td>
-            <pagination-controls
-              [previousLabel]="'Anterior'"
-              [nextLabel]="'Siguiente'"
-              (pageChange)="pageChange($event)"></pagination-controls>
-          </td>
-        </tr>
-       </tfoot>
 </table>
+<div class="pagination">
+    <pagination-controls 
+        [previousLabel]="'Anterior'"
+        [nextLabel]="'Siguiente'" 
+        (pageChange)="pageChange($event)">
+    </pagination-controls>
+</div>
