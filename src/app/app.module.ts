@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ToastrModule } from 'ngx-toastr';
 import { ApiInterceptor } from './helpers';
 
 // Modules
@@ -31,6 +32,10 @@ const socket: SocketIoConfig = { url: !local.production ? local.socket : prod.so
     BrowserAnimationsModule,
     HttpClientModule,
     NgxSpinnerModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      timeOut: 3000
+    }),
 
     // Socket
     SocketIoModule.forRoot(socket),

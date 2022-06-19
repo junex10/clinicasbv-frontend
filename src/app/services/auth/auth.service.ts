@@ -37,5 +37,4 @@ export class AuthService implements IAUTH {
 
   reset = (form: ResetParamsDTO) => this.http.post<any>(`${API}reset`, form);
 
-  getUsers = (page: number) => this.http.get(`${API}getUsers/${page}`); 
 }

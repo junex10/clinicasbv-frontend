@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services';
+import { GetUserDTO } from 'src/app/dtos';
+import { AuthService, PetitionService } from 'src/app/services';
 
 @Component({
   selector: 'app-profile',
@@ -11,9 +12,12 @@ export class ProfileComponent implements OnInit {
   data: any[] = [];
   total: number = 0;
   header = ['ID', 'First name', 'Last name'];
+  user: any;
+  petitions: [] = [];
 
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    private petition: PetitionService
   ) { }
 
   ngOnInit(): void {
@@ -22,10 +26,10 @@ export class ProfileComponent implements OnInit {
   }
 
   load = (page: any = 1) => {
-    this.auth.getUsers(page).subscribe(
-      (items: any) => {
-        this.data = items.data.users;
-        this.total = items.data.count;
+    this.user = this.auth.getUser()?.user;
+    this.petition.getPetitions(this.user.id, 1).subscribe(
+      (data) => {
+        console.log(data)
       }
     )
   }
