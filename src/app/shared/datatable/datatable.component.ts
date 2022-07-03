@@ -17,6 +17,7 @@ export class DatatableComponent implements OnChanges {
   @Input('page') page: number = 1;
   @Input('perPage') perPage: number = Constants.PER_PAGE_WEB;
   @Input('header') header: any[] = [];
+  @Input('notFoundText') notFoundText: string = 'No hay datos por mostrar';
 
   @Output() next = new EventEmitter<number>();
 

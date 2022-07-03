@@ -4,3 +4,8 @@ table {
 .pagination{
     margin-top: 20px;
 }
+.notFoundText{
+    text-align: center;
+    position: relative;
+    top: 40%;
+}
