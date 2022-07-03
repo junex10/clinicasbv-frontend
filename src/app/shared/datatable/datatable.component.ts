@@ -15,7 +15,7 @@ export class DatatableComponent implements OnChanges {
   @Input('data') data: any[] = [];
   @Input('total') total: number = 0;
   @Input('page') page: number = 1;
-  @Input('perPage') perPage: number = Constants.PER_PAGE;
+  @Input('perPage') perPage: number = Constants.PER_PAGE_WEB;
   @Input('header') header: any[] = [];
 
   @Output() next = new EventEmitter<number>();
@@ -51,6 +51,16 @@ export class DatatableComponent implements OnChanges {
   pageChange = (page: any) => {
     this.page = page;
     this.next.emit(page);
+  }
+
+  originalOrder = (a: any, b: any): number => {
+    return 0;
+  }
+  valueAscOrder = (a: any, b: any): number => {
+    return a.value.localeCompare(b.value);
+  }
+  keyDescOrder = (a: any, b: any): number => {
+    return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }
 
 }

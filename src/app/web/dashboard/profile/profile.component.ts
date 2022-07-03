@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GetUserDTO } from 'src/app/dtos';
 import { AuthService, PetitionService } from 'src/app/services';
 
 @Component({
@@ -11,9 +10,10 @@ export class ProfileComponent implements OnInit {
 
   data: any[] = [];
   total: number = 0;
-  header = ['ID', 'First name', 'Last name'];
+  header = ['#', 'Proceso', 'Fecha'];
   user: any;
   petitions: [] = [];
+  page: number = 1;
 
   constructor(
     private auth: AuthService,
@@ -22,14 +22,15 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.load();
+    this.load(this.page);
   }
 
   load = (page: any = 1) => {
     this.user = this.auth.getUser()?.user;
-    this.petition.getPetitions(this.user.id, 1).subscribe(
-      (data) => {
-        console.log(data)
+    this.petition.getPetitions(page).subscribe(
+      (item) => {
+        this.data = item.data.petitions;
+        this.total = item.data.count;
       }
     )
   }

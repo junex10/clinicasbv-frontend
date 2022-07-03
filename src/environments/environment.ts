@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:11031/api/',
+  baseApi: 'http://localhost:11031/api/',
+  baseUrl: 'http://localhost:11031/',
+  storage: 'http://localhost:11031/storage/',
   socket: 'http://localhost:11031/'
 };
 

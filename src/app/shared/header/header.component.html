@@ -8,10 +8,6 @@
                 <div class="image">
                     <img class="logo" src="assets/img/logo.png">
                 </div>
-                <div class="row" id="infoData" [ngStyle]="{'margin-top': '25px', 'margin-bottom': '25px'}">
-                    <div class="col-12 col-md-6 col-lg-6 col-sm-6" id="userEmail">{{ user.email }}</div>
-                    <div class="col-12 col-md-6 col-lg-6 col-sm-6" [ngStyle]="{'font-size': '14px'}">{{ user.level.name }}</div>
-                </div>
             </div>
             <nav class='animated bounceInDown'>
                 <ul [ngStyle]="{'padding-left': '15px'}">
@@ -40,10 +36,10 @@
         </div>
         <div class="col-12">
             <div class="menu box-shadow row options-box">
-                <div class="col-11" *ngIf="!showMenu" (click)="openMenu()">
+                <div class="col-10 col-lg-11 col-md-11" *ngIf="!showMenu" (click)="openMenu()">
                     <i class="fa-solid fa-bars iconMenu"></i>
                 </div>
-                <div class="col-1 user-box">
+                <div class="col-2 col-lg-1 col-md-1 user-box">
                     <img class="user" src="assets/img/user.png">
                 </div>
             </div>

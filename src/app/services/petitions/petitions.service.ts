@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  CheckPermissionDTO,
-  GetUserDTO,
-  ResetParamsDTO
-} from 'src/app/dtos';
-import { IAUTH } from 'src/app/interfaces';
-import { Router } from '@angular/router';
 
 const API = 'petition/';
 
@@ -20,5 +13,5 @@ export class PetitionService {
   ) { }
 
 
-  getPetitions = (user_id: number, page: number) => this.http.get(`${API}getPetitions/${user_id}/${page}`);
+  getPetitions = (page: number, user_id?: number) => this.http.get<any>(`${API}getPetitions/${page}/${user_id}`);
 }

@@ -12,7 +12,7 @@ export class ApiInterceptor implements HttpInterceptor {
     ) { }
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const api = !local.production ? local.baseUrl : prod.baseUrl;
+        const api = !local.production ? local.baseApi : prod.baseApi;
         this.spinner.show();
         const request = req.clone({ 
             url: `${api}${req.url}`,
