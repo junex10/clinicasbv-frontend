@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { NgxPaginationModule } from 'ngx-pagination';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 // Components
-import { ProfileComponent } from './profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ProfileGuard } from 'src/app/guards';
-import { DatatableComponent, HeaderComponent } from 'src/app/shared';
-import { DataTablesModule } from 'angular-datatables';
 
 const routes: Routes = [
   {
-    path: 'profile',
-    pathMatch: 'full',
+    path: '',
     component: ProfileComponent,
     canActivate: [ProfileGuard]
   }
@@ -21,15 +17,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProfileComponent,
-    HeaderComponent,
-    DatatableComponent
+    ProfileComponent
   ],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    DataTablesModule,
-    NgxPaginationModule,
-  ]
+    SharedModule
+  ],
 })
 export class ProfileModule { }

@@ -12,12 +12,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from 'ngx-toastr';
 import { ApiInterceptor } from './helpers';
 
-// Modules
-import { DashboardModule } from './web/dashboard/dashboard.module';
-
-const socket: SocketIoConfig = { url: !local.production ? local.socket : prod.socket, options: {
-  transports: ['websocket']
-} };
+const socket: SocketIoConfig = {
+  url: !local.production ? local.socket : prod.socket, options: {
+    transports: ['websocket']
+  }
+};
 
 @NgModule({
   declarations: [
@@ -39,8 +38,6 @@ const socket: SocketIoConfig = { url: !local.production ? local.socket : prod.so
 
     // Socket
     SocketIoModule.forRoot(socket),
-
-    DashboardModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }

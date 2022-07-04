@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotexistspageComponent } from './web/notexistspage/notexistspage.component';
-
+import { AppComponent } from './app.component';
 
 // Modules
-import { DashboardModule } from 'src/app/web/dashboard/dashboard.module';
+import { PagesModule } from 'src/app/web/pages/pages.module';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('src/app/web/dashboard/dashboard.module').then(mod => mod.DashboardModule)
+    component: AppComponent,
+    loadChildren: () => import('src/app/web/pages/pages.module').then(mod => mod.PagesModule)
   },
   {
     path: '**',

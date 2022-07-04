@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService, PetitionService } from 'src/app/services';
 
 @Component({
@@ -15,14 +16,25 @@ export class ProfileComponent implements OnInit {
   petitions: [] = [];
   page: number = 1;
 
+ // form: FormGroup;
+
   constructor(
+    //private fb: FormBuilder,
     private auth: AuthService,
     private petition: PetitionService
-  ) { }
+  ) { 
+    /*this.form = this.fb.group({
+      email: [null, [
+        Validators.required,
+        Validators.email
+      ]]
+    })*/
+  }
 
   ngOnInit(): void {
 
     this.load(this.page);
+    console.log(this.user, ' AQUI ')
   }
 
   load = (page: any = 1) => {

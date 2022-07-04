@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services';
 import Swal from 'sweetalert2';
 import { SwalAlerts } from 'src/app/shared';
-import { VerifyPassword } from './../register/register.validator';
+import { VerifyPassword } from '../register/register.validator';
 import { ResetParamsDTO } from 'src/app/dtos/index';
 import { Router } from '@angular/router';
 

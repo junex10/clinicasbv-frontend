@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~12.1.0",
     "@angular/platform-browser-dynamic": "~12.1.0",
     "@angular/router": "~12.1.0",
+    "@kolkov/angular-editor": "^1.0.2",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@types/socket.io": "^3.0.2",
     "angular-datatables": "^13.0.1",
