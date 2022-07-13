@@ -51,7 +51,8 @@ export class LoginComponent implements OnInit {
           this.auth.setUser(user);
           this.route.navigate(['/profile']);
         })
-      }
+      },
+      () => Swal.fire(SwalAlerts.swalError())
     )
   }
 
