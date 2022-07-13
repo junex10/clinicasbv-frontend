@@ -9,8 +9,7 @@
         <ng-content></ng-content>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="onClose()" *ngIf="acceptButton != null">{{ acceptButton }}</button>
-        <button type="button" class="btn btn-danger" (click)="onClose()" *ngIf="closeButton != null">{{ closeButton }}</button>
+        <button type="button" class="btn btn-success" (click)="onAccept()" *ngIf="acceptButton != null">{{ acceptButton }}</button>
+        <button type="button" class="btn btn-danger" (click)="onCancel()" *ngIf="closeButton != null">{{ closeButton }}</button>
     </div>
 </ng-template>
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>

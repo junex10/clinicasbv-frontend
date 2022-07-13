@@ -1,4 +1,4 @@
-import { SweetAlertOptions } from 'sweetalert2';
+import { SweetAlertCustomClass, SweetAlertOptions } from 'sweetalert2';
 import { Colors } from 'src/app/helpers';
 
 class SwalAlerts {
@@ -97,6 +97,14 @@ class SwalAlerts {
             confirmButton: 'btn btn-success'
         },
         timer: 3000
+    });
+
+    swalCustom = (
+        html: string,
+        custom?: SweetAlertOptions
+    ): SweetAlertOptions => ({
+        html,
+        ...custom,
     });
 }
 export default new SwalAlerts();

@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { DataTablesModule } from 'angular-datatables';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -28,17 +30,20 @@ import { RouterModule } from '@angular/router';
   imports: [
     RouterModule,
     CommonModule,
-    DataTablesModule,
-    NgxPaginationModule,
-    FormsModule, 
-    ReactiveFormsModule,
-
+    
     // Material Angular
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+
+    DataTablesModule,
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,
@@ -51,7 +56,9 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
-    FormsModule, 
+    MatNativeDateModule,
+    MatDatepickerModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   entryComponents: [

@@ -7,6 +7,11 @@ import {
     CheckPermissionDTO
 } from './request/auth.dto';
 
+// Profile
+import {
+    UpdateUserDTO
+} from './request/profile.dto';
+
 // Resources
 import {
     GetUserDTO,
@@ -21,5 +26,6 @@ export {
 
     // Resources
     GetUserDTO,
-    ResetParamsDTO
+    ResetParamsDTO,
+    UpdateUserDTO
 };

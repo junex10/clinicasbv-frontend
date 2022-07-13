@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor, ErrorInterceptor } from 'src/app/helpers';
+import { AuthInterceptor } from 'src/app/helpers';
 
 // Internal modules
 
@@ -10,6 +10,11 @@ import { ProfileModule } from './profile/profile.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
   {
     path: '',
     loadChildren: () => import('src/app/web/pages/auth/auth.module').then(mod => mod.AuthModule)
@@ -34,8 +39,7 @@ const routes: Routes = [
     ProfileModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ]
 })
 export class PagesModule { }

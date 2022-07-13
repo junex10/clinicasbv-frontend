@@ -9,7 +9,7 @@ import { ProfileGuard } from 'src/app/guards';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'profile',
     component: ProfileComponent,
     canActivate: [ProfileGuard]
   }
