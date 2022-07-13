@@ -42,9 +42,9 @@ export class ProfileComponent implements OnInit {
         Validators.email
       ]],
       name: [null, Validators.required],
-      lastname: [null, Validators.required],
-      phone: [null, Validators.required],
-      address: [null, Validators.required],
+      lastname: [null],
+      phone: [null],
+      address: [null],
       birthdate: [null, Validators.required]
     });
   }
@@ -91,7 +91,10 @@ export class ProfileComponent implements OnInit {
       return;
     } else {
       console.log(this.form.value)
-      this.profile.updateUser(this.form.value)
+      this.profile.updateUser({
+        ...this.form.value,
+        id: this.user.id
+      })
       .then(value => {
         console.log(value, ' AQUI ')
       });
