@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   submit = () => {
     this.login.login(this.form.value).subscribe(
       (user) => {
-        Swal.fire(SwalAlerts.swalSuccess('Se ha iniciado la sesión', '')).then(() => {
+        Swal.fire(SwalAlerts.swalSuccess('', 'Se ha iniciado la sesión')).then(() => {
           this.auth.setUser(user);
           this.route.navigate(['/profile']);
         })
