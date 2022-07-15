@@ -16,14 +16,32 @@ export class DatatableComponent implements OnChanges {
   @Input('total') total: number = 0;
   @Input('page') page: number = 1;
   @Input('perPage') perPage: number = Constants.PER_PAGE_WEB;
-  @Input('header') header: any[] = [];
+  @Input('header') header: any[] = ['Example Column 1', 'Example Column 2'];
   @Input('notFoundText') notFoundText: string = 'No hay datos por mostrar';
 
   @Output() next = new EventEmitter<number>();
 
   dtOptions: DataTables.Settings = {};
 
-  constructor() { }
+  constructor() { 
+    this.dtOptions = {
+      pageLength: Constants.PER_PAGE_WEB,
+      responsive: true,
+      pagingType: 'numbers',
+      language: {
+        processing: "Procesando...",
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ Elementos",
+        info: "Mostrando desde _START_ al _END_ de _TOTAL_ elementos",
+        infoEmpty: "Mostrando ningún elemento.",
+        infoFiltered: "(filtrado _MAX_ elementos total)",
+        infoPostFix: "",
+        loadingRecords: "Cargando registros...",
+        zeroRecords: "No se encontraron registros",
+        emptyTable: "No hay datos disponibles en la tabla",
+      }
+    }
+  }
 
   ngOnChanges(): void {
     setTimeout(() => {
