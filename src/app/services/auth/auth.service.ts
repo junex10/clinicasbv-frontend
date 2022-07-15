@@ -22,6 +22,7 @@ export class AuthService implements IAUTH {
 
   setUser = (data: any) => window.sessionStorage.setItem('user', JSON.stringify(data))
   getUser = (): GetUserDTO => JSON.parse(window.sessionStorage.getItem('user') || JSON.stringify(``))?.data || false;
+  removeUser = (): void => window.sessionStorage.removeItem('user');
   logout = (route: string = '/login') => {
     window.sessionStorage.removeItem('user');
     this.route.navigate([route]);

@@ -90,13 +90,15 @@ export class ProfileComponent implements OnInit {
       ));
       return;
     } else {
-      console.log(this.form.value)
       this.profile.updateUser({
         ...this.form.value,
         id: this.user.id
       })
-      .then(value => {
-        console.log(value, ' AQUI ')
+      .then(async value => {
+        Swal.fire(SwalAlerts.swalSuccess('Perfil', 'Perfil actualizado!'));
+        this.auth.removeUser();
+        await this.auth.setUser(value);
+        this.user = this.auth.getUser()?.user;
       });
     }
   }
