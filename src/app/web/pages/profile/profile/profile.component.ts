@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   data: any[] = [];
   total: number = 0;
-  header = ['#', 'Proceso', 'Fecha'];
+  header = ['#', 'Proceso', 'Fecha', 'Opciones'];
   user: any;
   petitions: [] = [];
   page: number = 1;
@@ -65,7 +65,15 @@ export class ProfileComponent implements OnInit {
 
     this.petition.getPetitions(page).subscribe(
       (item) => {
-        this.data = item.data.petitions;
+        const addTools = item.data.petitions.map((value: any) => (
+          { ...value, tools: [
+            {
+              icon: 'visibility',
+              action: 'showDetails()'
+            }
+          ] }
+        ));
+        this.data = addTools;
         this.total = item.data.count;
       }
     )
@@ -102,6 +110,10 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
+
+  showDetails = () => alert('Hey');
+
+  receivedTools = ($function: any) => eval(`this.${$function}`);
 
   get email() { return this.form.get('email')?.value }
   get name() { return this.form.get('name')?.value }

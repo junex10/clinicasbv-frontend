@@ -20,6 +20,7 @@ export class DatatableComponent implements OnChanges {
   @Input('notFoundText') notFoundText: string = 'No hay datos por mostrar';
 
   @Output() next = new EventEmitter<number>();
+  @Output() toolActionsEvent = new EventEmitter<any>();
 
   dtOptions: DataTables.Settings = {};
 
@@ -81,5 +82,5 @@ export class DatatableComponent implements OnChanges {
   keyDescOrder = (a: any, b: any): number => {
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }
-
+  toolsActions = (action: string) => this.toolActionsEvent.emit(action);
 }

@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DataTablesModule } from 'angular-datatables';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RouterModule } from '@angular/router';
     DataTablesModule,
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ],
   exports: [
     HeaderComponent,
@@ -59,7 +61,8 @@ import { RouterModule } from '@angular/router';
     MatNativeDateModule,
     MatDatepickerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ],
   entryComponents: [
     ModalComponent,
