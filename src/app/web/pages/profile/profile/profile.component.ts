@@ -21,10 +21,14 @@ export class ProfileComponent implements OnInit {
   user: any;
   petitions: [] = [];
   page: number = 1;
+  moment: any = moment;
 
   form: FormGroup;
 
   openEditModal: boolean = false;
+  openDetails: boolean = false;
+
+  petitionSelected: any = {};
 
   editUserStyle: NgbModalOptions = {
     size: 'xl'
@@ -111,9 +115,12 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  showDetails = () => alert('Hey');
+  showDetails = () => this.openDetails = true;
 
-  receivedTools = ($function: any) => eval(`this.${$function}`);
+  receivedTools = ($function: any) => {
+    this.petitionSelected = $function;
+    eval(`this.${$function.action}`);
+  }
 
   get email() { return this.form.get('email')?.value }
   get name() { return this.form.get('name')?.value }

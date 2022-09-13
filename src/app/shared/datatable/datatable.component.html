@@ -1,8 +1,8 @@
 <table datatable [dtOptions]="dtOptions" class="row-border hover box-shadow">
    <ng-container *ngIf="data.length > 0">
-        <thead>
+        <thead [ngStyle]="thStyles">
             <tr>
-                <th *ngFor="let h of header">{{ h }}</th>
+                <th *ngFor="let h of header" [ngStyle]="thItemsStyles">{{ h }}</th>
             </tr>
         </thead>
         <tbody>
@@ -12,7 +12,7 @@
                         {{ i.value }}
                     </ng-container>
                     <ng-container *ngIf="i.key === 'tools'">
-                        <div *ngFor="let t of $any(i.value)" (click)="toolsActions(t.action)" [ngStyle]="{'cursor': 'pointer'}">
+                        <div *ngFor="let t of $any(i.value)" (click)="toolsActions(t.action, item)" [ngStyle]="{'cursor': 'pointer'}">
                             <mat-icon matSuffix>{{ t.icon }}</mat-icon>
                         </div>
                     </ng-container>

@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 // Components
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileGuard } from 'src/app/guards';
+import { ShowDetailsComponent } from './profile/show-details/show-details.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    ShowDetailsComponent
   ],
   imports: [
     RouterModule.forChild(routes),

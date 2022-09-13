@@ -2,3 +2,6 @@
     background-color: white !important;
     width: 100%;
 }
+.card-body{
+    overflow-x: auto;
+}

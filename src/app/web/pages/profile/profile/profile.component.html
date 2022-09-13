@@ -56,6 +56,22 @@
         </form>
     </ng-container>
 </app-modal>
+<app-modal
+    title="Ver detalles"
+    [showModal]="openDetails"
+    (close)="this.openDetails = false"
+>
+    <app-show-details>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <b>Proceso:</b> {{ petitionSelected.process }}
+            </div>
+            <div class="col-12 col-lg-6">
+                <b>Fecha:</b> {{ moment(petitionSelected.date).format('DD/MM/YYYY') }}
+            </div>
+        </div>
+    </app-show-details>
+</app-modal>
 <div class="g-sidenav-show bg-gray-200">
     <div class="main-content position-relative max-height-vh-100 h-100">
         <!-- Navbar -->
@@ -138,6 +154,8 @@
                                         [total]="total"
                                         (next)="next($event)"
                                         (toolActionsEvent)="receivedTools($event)"
+                                        [thStyles]="{'background': 'var(--danger)'}"
+                                        [thItemsStyles]="{'font-weight': 'bold', 'color': 'white'}"
                                     ></app-table>
                                 </div>
                             </div>

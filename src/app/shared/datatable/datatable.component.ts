@@ -18,6 +18,8 @@ export class DatatableComponent implements OnChanges {
   @Input('perPage') perPage: number = Constants.PER_PAGE_WEB;
   @Input('header') header: any[] = ['Example Column 1', 'Example Column 2'];
   @Input('notFoundText') notFoundText: string = 'No hay datos por mostrar';
+  @Input('thStyles') thStyles: any = '';
+  @Input('thItemsStyles') thItemsStyles: any = '';
 
   @Output() next = new EventEmitter<number>();
   @Output() toolActionsEvent = new EventEmitter<any>();
@@ -47,24 +49,10 @@ export class DatatableComponent implements OnChanges {
   ngOnChanges(): void {
     setTimeout(() => {
       this.dtOptions = {
+        ...this.dtOptions,
         ...this.options,
-        pageLength: Constants.PER_PAGE_WEB,
-        responsive: true,
-        pagingType: 'numbers',
-        language: {
-          processing: "Procesando...",
-          search: "Buscar:",
-          lengthMenu: "Mostrar _MENU_ Elementos",
-          info: "Mostrando desde _START_ al _END_ de _TOTAL_ elementos",
-          infoEmpty: "Mostrando ningún elemento.",
-          infoFiltered: "(filtrado _MAX_ elementos total)",
-          infoPostFix: "",
-          loadingRecords: "Cargando registros...",
-          zeroRecords: "No se encontraron registros",
-          emptyTable: "No hay datos disponibles en la tabla",
-          ...this.language
-        }
-      };
+        ...this.language
+      }
     }, 600)
   }
 
@@ -82,5 +70,5 @@ export class DatatableComponent implements OnChanges {
   keyDescOrder = (a: any, b: any): number => {
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }
-  toolsActions = (action: string) => this.toolActionsEvent.emit(action);
+  toolsActions = (action: string, item: any) => this.toolActionsEvent.emit({ action, ...item });
 }
