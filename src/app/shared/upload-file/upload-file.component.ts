@@ -12,6 +12,7 @@ interface Image {
   blob: Blob;
   name: string;
   size: number;
+  type: string;
 }
 
 @Component({
@@ -65,7 +66,8 @@ export class UploadFileComponent implements OnInit {
               name: inputNode.name,
               size: inputNode.size,
               blob: new Blob([JSON.stringify(new Uint8Array(this.srcResult), null, 2)], { type: mimeString }),
-              base64: `data:image/png;base64,${this.toBase64(this.srcResult)}`
+              base64: `data:image/png;base64,${this.toBase64(this.srcResult)}`,
+              type: mimeString
             };
           }
           resolve(imageFile);
