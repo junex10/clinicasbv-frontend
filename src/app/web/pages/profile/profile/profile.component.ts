@@ -30,6 +30,8 @@ export class ProfileComponent implements OnInit {
 
   petitionSelected: any = {};
 
+  userImage: string = 'assets/img/user.png';
+
   editUserStyle: NgbModalOptions = {
     size: 'xl'
   };
@@ -120,6 +122,10 @@ export class ProfileComponent implements OnInit {
   receivedTools = ($function: any) => {
     this.petitionSelected = $function;
     eval(`this.${$function.action}`);
+  }
+
+  onImage = (file: any) => {
+    this.userImage = file.base64;
   }
 
   get email() { return this.form.get('email')?.value }

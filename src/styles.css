@@ -82,6 +82,11 @@ html, body { height: 100%; }
 .mat-button-disabled{
    font-family: 'REGULAR';
 }
+.line{
+    margin-top: 10px;
+    background-color: black;
+    border: none;
+}
 .box-shadow{
     box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);
 	-webkit-box-shadow: 0 3px 6px 0 rgba(171, 171, 171, .7);

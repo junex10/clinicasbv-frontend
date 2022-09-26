@@ -21,12 +21,14 @@ import { DataTablesModule } from 'angular-datatables';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule } from '@angular/router';
 import { PipesModule } from '../pipes/pipes.module';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     DatatableComponent,
-    ModalComponent
+    ModalComponent,
+    UploadFileComponent
   ],
   imports: [
     RouterModule,
@@ -51,6 +53,7 @@ import { PipesModule } from '../pipes/pipes.module';
     HeaderComponent,
     DatatableComponent,
     ModalComponent,
+    UploadFileComponent,
 
     // Modules
     MatInputModule,
@@ -67,7 +70,8 @@ import { PipesModule } from '../pipes/pipes.module';
   entryComponents: [
     ModalComponent,
     HeaderComponent,
-    DatatableComponent
+    DatatableComponent,
+    UploadFileComponent
   ]
 })
 export class SharedModule { }
