@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 const STATUS = {
@@ -27,6 +27,10 @@ export class UploadFileComponent implements OnInit {
   srcResult: any;
   @ViewChild('fileInput') fileInput: any;
   @Output() file = new EventEmitter<any>();
+
+  @Input('onText') onText: string = 'Subir archivo';
+  @Input('onSuccessText') onSuccessText: string = 'Archivo subido';
+  @Input('onWaitingText') onWaitingText: string = 'Subiendo archivo';
 
   constructor(
     private fb: FormBuilder,
@@ -65,7 +69,7 @@ export class UploadFileComponent implements OnInit {
             imageFile = {
               name: inputNode.name,
               size: inputNode.size,
-              blob: new Blob([JSON.stringify(new Uint8Array(this.srcResult), null, 2)], { type: mimeString }),
+              blob: new Blob([new Uint8Array(this.srcResult)], { type: mimeString }),
               base64: `data:image/png;base64,${this.toBase64(this.srcResult)}`,
               type: mimeString
             };

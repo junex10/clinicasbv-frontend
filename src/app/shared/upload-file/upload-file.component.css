@@ -1,6 +1,6 @@
 .uploading {
     background-color: var(--info);
-    color: white;
+    color: black;
 }
 .uploaded {
     background-color: var(--success);
