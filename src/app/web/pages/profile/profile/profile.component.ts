@@ -7,6 +7,7 @@ import {
   SwalAlerts
 } from 'src/app/shared';
 import * as moment from 'moment';
+import { ENVIRONMENT } from 'src/app/shared';
 
 @Component({
   selector: 'app-profile',
@@ -51,7 +52,9 @@ export class ProfileComponent implements OnInit {
       lastname: [null],
       phone: [null],
       address: [null],
-      birthdate: [null, Validators.required]
+      birthdate: [null, Validators.required],
+      photo: [null],
+      id: [null]
     });
   }
 
@@ -61,6 +64,7 @@ export class ProfileComponent implements OnInit {
 
   load = (page: any = 1) => {
     this.user = this.auth.getUser()?.user;
+    this.user.photo = `${ENVIRONMENT.storage}${this.user.photo}`;
 
     this.form.get('email')?.setValue(this.user.email);
     this.form.get('name')?.setValue(this.user.person.name);
@@ -68,6 +72,7 @@ export class ProfileComponent implements OnInit {
     this.form.get('phone')?.setValue(this.user.person.phone);
     this.form.get('address')?.setValue(this.user.person.address);
     this.form.get('birthdate')?.setValue(moment(this.user.person.birthdate).toDate());
+    this.form.get('id')?.setValue(this.user.id);
 
     this.petition.getPetitions(page).subscribe(
       (item) => {
@@ -104,9 +109,10 @@ export class ProfileComponent implements OnInit {
       ));
       return;
     } else {
+      
       this.profile.updateUser({
         ...this.form.value,
-        id: this.user.id
+        formData: true
       })
       .then(async value => {
         Swal.fire(SwalAlerts.swalSuccess('Perfil', 'Perfil actualizado!'));
@@ -126,6 +132,7 @@ export class ProfileComponent implements OnInit {
 
   onImage = (file: any) => {
     this.userImage = file.base64;
+    this.form.get('photo')?.setValue(file.blob);
   }
 
   get email() { return this.form.get('email')?.value }
@@ -134,4 +141,5 @@ export class ProfileComponent implements OnInit {
   get phone() { return this.form.get('phone')?.value }
   get address() { return this.form.get('address')?.value }
   get birthdate() { return this.form.get('birthdate')?.value }
+  get photo() { return this.form.get('photo')?.value }
 }

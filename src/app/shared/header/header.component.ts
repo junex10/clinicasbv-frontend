@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { GetUserDTO } from 'src/app/dtos';
 import { AuthService } from 'src/app/services';
+import { ENVIRONMENT } from 'src/app/shared';
 
 @Component({
   selector: 'app-header',
@@ -43,6 +44,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.auth.getUser()?.user;
+    this.user.photo = `${ENVIRONMENT.storage}${this.user.photo}`;
   }
 
   openMenu = () => this.showMenu = this.showMenu ? false : true;

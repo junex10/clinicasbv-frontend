@@ -19,5 +19,5 @@ export class ProfileService implements IPROFILE {
   ) { }
 
 
-  updateUser = (body: UpdateUserDTO) => this.http.post<GetUserDTO>(`${API}update`, body).toPromise();
+  updateUser = (body: any) => this.http.post<GetUserDTO>(`${API}update`, body).toPromise();
 }

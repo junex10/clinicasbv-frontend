@@ -10,7 +10,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from 'ngx-toastr';
-import { ApiInterceptor, AuthInterceptor, ErrorInterceptor } from './helpers';
+import { ApiInterceptor, AuthInterceptor, ErrorInterceptor, FormInterceptor } from './helpers';
 
 const socket: SocketIoConfig = {
   url: !local.production ? local.socket : prod.socket, options: {
@@ -41,7 +41,8 @@ const socket: SocketIoConfig = {
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: FormInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

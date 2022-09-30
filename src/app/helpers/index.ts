@@ -6,6 +6,7 @@ import Image from "./image";
 import { ApiInterceptor } from "./interceptors/api.interceptor";
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { ErrorInterceptor } from "./interceptors/error.interceptor";
+import { FormInterceptor } from "./interceptors/form.interceptor";
 
 export {
     Colors,
@@ -13,5 +14,6 @@ export {
     Image,
     ApiInterceptor,
     AuthInterceptor,
-    ErrorInterceptor
+    ErrorInterceptor,
+    FormInterceptor
 }
