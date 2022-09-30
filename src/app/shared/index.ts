@@ -8,6 +8,7 @@ import Constants from './commons/constants.common';
 import { HeaderComponent } from './header/header.component';
 import { DatatableComponent } from './datatable/datatable.component';
 import { ModalComponent } from './modal/modal.component';
+import { PrintComponent } from './print/print.component';
 
 export {
     SwalAlerts,
@@ -18,5 +19,6 @@ export {
     // Components
     HeaderComponent,
     DatatableComponent,
-    ModalComponent
+    ModalComponent,
+    PrintComponent
 };

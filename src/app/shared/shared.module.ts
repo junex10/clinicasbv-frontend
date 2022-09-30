@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   DatatableComponent,
   HeaderComponent,
-  ModalComponent
+  ModalComponent,
+  PrintComponent
 } from 'src/app/shared';
 
 // External modules
@@ -28,7 +29,8 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     HeaderComponent,
     DatatableComponent,
     ModalComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    PrintComponent
   ],
   imports: [
     RouterModule,
@@ -54,6 +56,7 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     DatatableComponent,
     ModalComponent,
     UploadFileComponent,
+    PrintComponent,
 
     // Modules
     MatInputModule,
@@ -71,7 +74,8 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
     ModalComponent,
     HeaderComponent,
     DatatableComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    PrintComponent
   ]
 })
 export class SharedModule { }

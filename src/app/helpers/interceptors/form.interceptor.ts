@@ -10,7 +10,7 @@ export class FormInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const body = req.body;
         let formdata = new FormData();
-        if (body.formData) {
+        if (body?.formData) {
             for (var key in body) {
                 if (Array.isArray(body[key])) {
                     for (var _key in body[key]) {

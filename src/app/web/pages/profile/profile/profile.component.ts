@@ -73,6 +73,7 @@ export class ProfileComponent implements OnInit {
     this.form.get('address')?.setValue(this.user.person.address);
     this.form.get('birthdate')?.setValue(moment(this.user.person.birthdate).toDate());
     this.form.get('id')?.setValue(this.user.id);
+    
 
     this.petition.getPetitions(page).subscribe(
       (item) => {
