@@ -33,7 +33,6 @@ export class PrintComponent implements OnInit {
       }
     }
     else if (Globals.isPdf(url) || isPDF) {
-    console.log(url, isPDF)
       PrintJS({
         printable: url
       });
