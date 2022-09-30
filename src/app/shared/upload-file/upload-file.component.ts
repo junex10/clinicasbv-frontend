@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 const STATUS = {
   NOT_CHARGED: 0,
   CHARGING: 1,
@@ -62,18 +63,13 @@ export class UploadFileComponent implements OnInit {
 
         reader.onload = (file: any) => {
           this.srcResult = file.target.result;
-          if (mimeString === 'application/pdf') {
-
-          }
-          else {
-            imageFile = {
-              name: inputNode.name,
-              size: inputNode.size,
-              blob: new Blob([new Uint8Array(this.srcResult)], { type: mimeString }),
-              base64: `data:image/png;base64,${this.toBase64(this.srcResult)}`,
-              type: mimeString
-            };
-          }
+          imageFile = {
+            name: inputNode.name,
+            size: inputNode.size,
+            blob: new Blob([new Uint8Array(this.srcResult)], { type: mimeString }),
+            base64: `data:image/png;base64,${this.toBase64(this.srcResult)}`,
+            type: mimeString
+          };
           resolve(imageFile);
         };
         reader.readAsArrayBuffer(inputNode);
