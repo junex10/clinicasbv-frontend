@@ -11,7 +11,7 @@ import { ENVIRONMENT } from 'src/app/shared';
 })
 export class HeaderComponent implements OnInit {
 
-  showMenu: boolean = false;
+  showMenu: boolean = true;
   user: GetUserDTO | any = '';
 
   menu = [

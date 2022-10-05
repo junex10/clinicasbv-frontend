@@ -1,5 +1,5 @@
 .menu{
-    background-color: var(--white);
+    background-color: var(--black);
 }
 .user-box{
     padding: 5px;
@@ -55,6 +55,7 @@
 }
 .sidebar {
     height: 100%;
+    width: 13%;
     position: absolute;
     z-index: 1;
 }
@@ -100,4 +101,13 @@ nav ul li ul li a {
 nav ul li ul li a:hover {
 	border-left: 4px solid var(--success);
     color: var(--white);
+}
+.menuItem {
+    color: var(--white);
+}
+.iconDown {
+    color: var(--white)
+}
+.menuItemBlack {
+    color: var(--black);
 }
