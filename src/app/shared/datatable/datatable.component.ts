@@ -30,7 +30,7 @@ export class DatatableComponent implements OnChanges {
     this.dtOptions = {
       pageLength: Constants.PER_PAGE_WEB,
       responsive: true,
-      pagingType: 'numbers',
+      order: [],
       language: {
         processing: "Procesando...",
         search: "Buscar:",
